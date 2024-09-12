@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="container-xxl mx-auto w-full ">
+  <main class="p-5 border-x-2 shadow-md shadow-black letter">
+    {{ block "main" . }}{{ end }}
+
+    <div class="letter-logo"></div>
+    <div class="paper-overlay"></div>
+  </main>
+</body>
+</html>

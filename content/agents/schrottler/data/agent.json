@@ -1,0 +1,31 @@
+{
+	"name": {
+		"fore": "Rodolf",
+		"sure": "Schrottler",
+		"callsign": "Dominion"
+	},
+	"age": 30,
+	"sex": "m",
+	"pronouns": "he/him",
+	"religion": "atheist",
+	"profession": "Network Technician",
+	"marital_status": "Single",
+	"proficiency": "field_agent",
+	"activation_location": "New York City, 2nd Wave",
+	"agency_role": "Aufklärung und Informationsbeschaffung",
+	"shd_status": "active",
+	"stats": {
+		"actions": [
+			{ "action": "crafting", "value": 20 }
+		],
+		"knowledge": [],
+		"social": [
+			{ "action": "day drinking", "value": 2 }
+		]
+	},
+	"inventory": [
+		{ "item": "MPX", "amount": 1, "type": "weapon", "description": "2d4 Damage" },
+		{ "item": "Panzerplatte", "amount": 3, "type": "supplies", "description": "Restores Armor" }
+	],
+	"notes": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
+}

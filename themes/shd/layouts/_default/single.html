@@ -1,0 +1,186 @@
+{{ define "main" }}
+
+  {{ $agent := dict }}
+  {{ $path := "data/agent.json" }}
+  {{ with .Resources.Get $path }}
+    {{ with . | transform.Unmarshal }}
+      {{ $agent = . }}
+    {{ end }}
+  {{ end }}
+
+  {{ $prof := string $agent.proficiency }}
+  {{ $proficiency := dict
+    "field_agent" "Field Agent"
+    "rnd_technican" "Research & Development"
+    "support" "Support"
+  }}
+
+  {{ $se := string $agent.sex }}
+  {{ $sex := dict
+    "m" "Männlich"
+    "f" "Weiblich"
+    "d" "Divers"
+  }}
+
+  {{ $st := string $agent.shd_status }}
+  {{ $state := dict
+    "active" "Aktiv"
+    "rogue" "Abtrünnig"
+    "deceased" "Verstorben"
+  }}
+
+  <div class="grid grid-cols-3 gap-2 z-10">
+    <div>
+      <div class="tape"></div>
+
+      {{ $image := resources.Get "images/default_profile.webp" }}
+      <img class="rotate-1 photo" src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}">
+    </div>
+  
+    <div class="flex flex-col col-span-2 space-y-2">
+      <div>
+        <h1 class="text-2xl">{{ $agent.name.fore }} '{{ $agent.name.callsign }}' {{ $agent.name.sure }}</h1>
+        <h2 class="text-sm italic">{{ index $proficiency $prof }}, {{ $agent.activation_location }}</h2>
+      </div>
+
+      <div class="flex flex-row mt-4 w-100">
+        <div class="flex flex-col basis-1/3">
+          <span class="font-semibold">Geschlecht</span>
+          <span>{{ index $sex $se }} ({{ $agent.pronouns }})</span>
+        </div>
+
+        <div class="flex flex-col basis-1/3">
+          <span class="font-semibold">Alter</span>
+          <span>{{ $agent.age }}</span>
+        </div>
+
+        <div class="flex flex-col basis-1/3">
+          <span class="font-semibold">Religion</span>
+          <span>{{ strings.FirstUpper $agent.religion }}</span>
+        </div>
+      </div>
+
+      <div class="flex flex-row w-100">
+        <span class="flex flex-col basis-1/3">
+          <span class="font-semibold">Familienstand</span>
+          <span>{{ $agent.marital_status }}</span>
+        </span>
+
+        <div class="flex flex-col basis-2/3">
+          <span class="font-semibold">Beruf</span>
+          <span>{{ $agent.profession }}</span>
+        </div>
+      </div>
+
+      <div class="flex flex-row w-100">
+        <div class="flex flex-col basis-1/3">
+          <span class="font-semibold">SHD-Status</span>
+          <span>{{ index $state $st }}</span>
+        </div>
+
+        <span class="flex flex-col basis-2/3">
+          <span class="font-semibold">Aufgabenbereich</span>
+          <span>{{ $agent.agency_role }}</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="flex flex-col col-span-3 space-y-2">
+      <h2 class="text-base font-semibold">Biographie</h2>
+      <hr/>
+      <p>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt 
+        ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo 
+        dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor 
+        sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor 
+        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et 
+        justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet.
+      </p>
+    </div>
+
+    <div class="flex flex-col col-span-3 space-y-2">
+      <h2 class="text-base font-semibold">Erscheinung</h2>
+      <hr/>
+      <p>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut 
+        labore et dolore magna aliquyam erat, sed diam voluptua. At
+      </p>
+    </div>
+
+    <!-- Stat Blocks -->
+    <div class="flex flex-col col-span-3 space-y-2">
+      <table class="border table-fixed">
+        <thead>
+          <tr>
+            <th scope="col">Handeln</th>
+            <th scope="col">Wissen</th>
+            <th scope="col">Sozial</th>
+          </tr>
+
+          <tr>
+            <th>
+              <span>25</span>
+              <span>-</span>
+            </th>
+
+            <th>
+              <span>25</span>
+              <span>3</span>
+            </th>
+
+            <th>
+              <span>25</span>
+              <span>2</span>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            {{ range $agent.stats.actions }}
+              <td>{{ .action }}</td>
+            {{ end }}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Weaponry -->
+    <div class="flex flex-col col-span-2 space-y-2">
+      <h2 class="text-base font-semibold">Ausrüstung</h2>
+      <hr/>
+      <div class="flex flex-col">
+        {{ $equip := slice "weapon" "gear"}}
+        {{ range where $agent.inventory "type" "in" $equip }}
+          <div class="flex flex-row w-100 justify-between">
+            <span>{{ .type }}</span>
+            <span>{{ .item }}</span>
+            <span>{{ .description }}</span>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+
+    <!-- Supplies -->
+    <div class="flex flex-col space-y-2">
+      <h2 class="text-base font-semibold">Vorräte</h2>
+      <hr/>
+      <p>
+        {{ $equip := slice "weapon" "gear"}}
+        {{ range where $agent.inventory "type" "not in" $equip }}
+          {{ .item }} {{ .amount }}x
+        {{ else }}
+          -
+        {{ end }}
+      </p>
+    </div>
+
+    <!-- Notes -->
+    <div class="flex flex-col col-span-3 space-y-2">
+      <h2 class="text-base font-semibold">Anmerkungen</h2>
+      <hr/>
+      <p>{{ $agent.notes }}</p>
+    </div>
+  </div>  
+{{ end }}

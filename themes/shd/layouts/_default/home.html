@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <h1 class="text-2xl mb-2">SHD - Agents</h1>
+  <div class="grid grid-cols-1 gap-2">
+    {{ with site.GetPage "/agents" }}
+    {{ range .Pages }}
+      <div class="rounded-md bg-shd text-white p-1">
+        <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+        {{ .Summary }}
+      </div>
+    {{ end }}
+  {{ end }}
+  </div>
+{{ end }}
