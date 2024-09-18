@@ -1,0 +1,8 @@
+<div class="tape print:hidden"></div>
+
+{{ $image := "avatar.webp" }}
+{{ with .Page.Resources.GetMatch "avatar" }}
+  <img class="rotate-1 print:rotate-0 photo" src="{{ .RelPermalink }}" width="256px" height="256px" alt="">
+{{ else }}
+  <img class="rotate-1 print:rotate-0 photo" src="/default.png" width="256px" height="256px" alt="">
+{{ end }}

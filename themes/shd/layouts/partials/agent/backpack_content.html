@@ -1,0 +1,13 @@
+{{ $rarities := partial "item/rarities.html" . }}
+{{ $types := partial "item/types.html" . }}
+
+<p>
+{{ range . }}
+	<div class="flex flex-col">
+		<span>{{ .title }}, {{ .amount }}x</span>
+		<span class="text-xs">{{ index $rarities .rarity }} • {{ index $types .type }}</span>
+	</div>
+{{ else }}
+	-
+{{ end }}
+</p>

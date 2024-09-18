@@ -1,0 +1,70 @@
+{
+	"name": {
+		"fore": "Rodolf",
+		"sure": "Schrottler",
+		"callsign": "Dominion"
+	},
+	"bio": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+	"look": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+	"age": 30,
+	"sex": "m",
+	"pronouns": "he/him",
+	"religion": "atheist",
+	"profession": "Netzwerktechniker",
+	"marital_status": "Single",
+	"proficiency": "field_agent",
+	"activation_location": "New York City, 2nd Wave",
+	"agency_role": "Aufklärung und Informationsbeschaffung",
+	"shd_status": "active",
+	"abilities": {
+		"actions": [
+			{ "action": "Crafting", "value": 20 },
+			{ "action": "Pistolen", "value": 50 },
+			{ "action": "SMGs", "value": 80 },
+			{ "action": "Athletik", "value": 50 }
+		],
+		"knowledge": [
+			{ "action": "Wahrnehmung", "value": 70 }
+		],
+		"social": [
+			{ "action": "Manipulieren", "value": 50 },
+			{ "action": "Menschenkenntnis", "value": 80 }
+		]
+	},
+	"armory": {
+		"primary": {
+			"title": "Dark Winter",
+			"type": "smg",
+			"rarity": "high-end",
+			"description": "It was supposed to be an exercise. Turns out... we weren't prepared.",
+			"damage": "6d4"
+		},
+		"sidearm": {
+			"title": "KARD",
+			"type": "sidearm",
+			"rarity": "super",
+			"description": "Default sidearm for all active field agents",
+			"damage": "2d4"
+		},
+		"gear": {
+			"title": "All Hazards Nitro Backpack",
+			"type": "light",
+			"rarity": "common",
+			"description": "Default armor for all active field agents",
+			"armor": 2
+		},
+		"backpack": {
+			"title": "Ninja Bike Messanger Backpack",
+			"type": "backpack",
+			"rarity": "exotic",
+			"description": "Parkour! Parkour!",
+			"capacity": "10",
+			"content": [
+				{ "title": "MPX", "rarity": "common", "amount": 1, "type": "smg", "description": "2d4 Damage, 10% crit chance" },
+				{ "title": "Panzerplatte", "rarity": "common", "amount": 3, "type": "supplies", "description": "Restores Armor" },
+				{ "title": "Wasserflasche", "rarity": "common", "amount": 1, "type": "supplies", "description": "a bottle of water"}
+			]
+		}
+	},
+	"notes": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
+}

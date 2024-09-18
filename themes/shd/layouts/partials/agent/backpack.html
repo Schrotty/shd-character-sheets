@@ -1,0 +1,26 @@
+{{ $rarities := partial "item/rarities.html" . }}
+
+<div class="flex flex-col">
+	<table class="table-fixed">
+		<thead>
+			<tr>
+				<th class="text-left">Name</th>
+				<th class="text-left">Beschreibung</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{{ if ne . nil}}
+				<tr>
+					<td class="w-40">
+						<div class="flex flex-col">
+							<span title="{{ .title }}" class="text-pretty">{{ .title }}</span>
+							<span class="text-xs">{{ index $rarities .rarity }} • {{ .capacity }} slots</span>
+						</div>
+					</td>
+					<td class="align-top italic">{{ .description }}</td>
+				</tr>
+			{{ end }}
+		</tbody>
+	</table>
+</div>

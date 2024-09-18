@@ -1,0 +1,38 @@
+<table class="border border border-black border-collapse table-fixed h-fit">
+	<thead>
+	  <tr>
+		<th colspan="4" class="border border-black">{{ .title }}</th>
+	  </tr>
+
+	  <tr>
+		<th colspan="2" class="border border-black">
+		  {{ $talent := 0 }}
+		  {{ range .abilities }}
+			{{ $talent = add $talent (float .value) }}
+		  {{ end }}
+
+		  {{ $talent = math.Round (div $talent 10) }}
+		  {{ $talent}}
+		</th>
+		<th colspan="2" class="border border-black">{{ math.Round (div $talent 10) }}</th>
+	  </tr>
+	</thead>
+
+	<tbody>
+	  {{ range .abilities }}
+		<tr>
+		  <td class="border border-black px-2 text-left">{{ .action }}</td>
+		  <td class="border border-black px-2 text-center">{{ .value }}</td>
+		  <td class="border border-black px-2 text-center">{{ $talent }}</td>
+		  <td class="border border-black px-2 text-center">{{ add .value $talent }}</td>
+		</tr>
+	  {{ else }}
+		<tr>
+			<td class="border border-black px-2 text-left">-</td>
+			<td class="border border-black px-2 text-center"></td>
+			<td class="border border-black px-2 text-center"></td>
+			<td class="border border-black px-2 text-center"></td>
+		</tr>
+	  {{ end }}
+	</tbody>
+  </table>
