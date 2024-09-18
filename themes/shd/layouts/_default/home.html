@@ -3,10 +3,11 @@
   <div class="grid grid-cols-1 gap-2">
     {{ with site.GetPage "/agents" }}
     {{ range .Pages }}
-      <div class="rounded-md bg-shd text-white p-1">
-        <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-        {{ .Summary }}
-      </div>
+      <a href="{{ .RelPermalink }}">
+        <div class="rounded-md bg-shd text-white px-2 py-1 hover:underline">
+          <h2>{{ .LinkTitle }}</h2>
+        </div>
+      </a>
     {{ end }}
   {{ end }}
   </div>

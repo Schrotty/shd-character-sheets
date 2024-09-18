@@ -21,17 +21,17 @@
 	<tbody>
 	  {{ range .abilities }}
 		<tr>
-		  <td class="border border-black px-2 text-left">{{ .action }}</td>
-		  <td class="border border-black px-2 text-center">{{ .value }}</td>
-		  <td class="border border-black px-2 text-center">{{ $talent }}</td>
-		  <td class="border border-black px-2 text-center">{{ add .value $talent }}</td>
+		  <td class="border border-black px-1 text-left">{{ .action }}</td>
+		  <td class="border border-black px-1 text-center">{{ .value }}</td>
+		  <td class="border border-black px-1 text-center">{{ $talent }}</td>
+		  <td class="border border-black px-1 text-center">{{ add .value $talent }}</td>
 		</tr>
 	  {{ else }}
 		<tr>
-			<td class="border border-black px-2 text-left">-</td>
-			<td class="border border-black px-2 text-center"></td>
-			<td class="border border-black px-2 text-center"></td>
-			<td class="border border-black px-2 text-center"></td>
+			<td class="border border-black px-1 text-left">-</td>
+			<td class="border border-black px-1 text-center"></td>
+			<td class="border border-black px-1 text-center"></td>
+			<td class="border border-black px-1 text-center"></td>
 		</tr>
 	  {{ end }}
 	</tbody>
